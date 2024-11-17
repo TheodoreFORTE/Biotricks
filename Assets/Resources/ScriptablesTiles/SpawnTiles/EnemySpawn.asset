@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00cc6fe3dfcc42f4bb60e4a457683476, type: 3}
+  m_Name: EnemySpawn
+  m_EditorClassIdentifier: 
+  tile: {fileID: 11400000, guid: 98be6b0ee05acc74fa555b1644101fa7, type: 2}
+  isPlayerSide: 0
+  prefabToSpawn: {fileID: 8500116817998958072, guid: 01411bbf7710e9c46900688dac3f52df, type: 3}
