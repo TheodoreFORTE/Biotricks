@@ -9,14 +9,17 @@ public class FieldScanner : MonoBehaviour
     private Tilemap tilemap;
 
     [SerializeField]
+    //List of scriptable objects defined;
     private List<SpawnTile> spawnTiles;
 
+    //Spawner object per TileBase
+    private Dictionary<TileBase , GameObject> spawnTileDictionary;   
+    //Final data to use in the game
+    private Dictionary<Vector3Int, TileData> tileDictionary;    
     
-
-    private Dictionary<TileBase , GameObject> spawnTileDictionary;
-
-
-    private Dictionary<Vector3Int, TileData> tileDictionary;
+    //Tool for spawn-related gamelogic
+    [SerializeField]
+    private TileEventContainer spawnCommunicator;
 
     private List<Vector3Int> spawnPositions;
 
@@ -33,12 +36,8 @@ public class FieldScanner : MonoBehaviour
             spawnTileDictionary.Add(spawnTile.tile,spawnTile.prefabToSpawn);
         }
 
-
         tileDictionary = ScanTilemap();
-
-        
-
-
+      
 
     }
 
@@ -48,14 +47,11 @@ public class FieldScanner : MonoBehaviour
 
         Dictionary<Vector3Int, TileData> tileDict = new Dictionary<Vector3Int, TileData>();
 
-        int tileCounter = 0;
-
         for (int x = bounds.xMin; x < bounds.xMax; x++)
         {
             for (int y = bounds.yMin; y < bounds.yMax; y++)
             {
                 Vector3Int cellPosition = new Vector3Int(x, y, 0);
-                Vector3 worldPosition = tilemap.CellToWorld(cellPosition);
                 TileBase tile = tilemap.GetTile(cellPosition);
 
                 if (tile != null)
@@ -65,23 +61,42 @@ public class FieldScanner : MonoBehaviour
                     
                     if(spawnTileDictionary.ContainsKey(tile))
                     {
-                        Instantiate(spawnTileDictionary[tile], worldPosition, Quaternion.Euler(0,0,90));
+
+                        spawnPositions.Add(cellPosition);
+
+                        
+
+                        //Instantiate(spawnTileDictionary[tile], worldPosition, Quaternion.Euler(0,0,90));
+                        tileDict[cellPosition].isSpawnTile = true;
+
                     }
 
-                    tileCounter++;
+                    
                 }
             }
             
         }
-        //Debug.Log(tileCounter +" "+ gameObject.tag ); 
+      
         return tileDict;
 
     }
 
-    public List<Vector3Int> GetSpawnPositions()
+    public void SendSpawnPositions()
     {
-        return new List<Vector3Int>(spawnPositions);
+        foreach(Vector3Int position in spawnPositions)
+        {
+            Debug.Log($"I should send the data of {position}");
+            GameEventArgs<Vector3Int> spawnData = new GameEventArgs<Vector3Int>(position);
+            spawnCommunicator?.onEvent.Invoke(spawnData);
+        }
     }
+
+
+
+
+    
+
+    
 
 
 }
