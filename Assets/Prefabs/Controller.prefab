@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1904558657031812982}
   - component: {fileID: 3770606879433078433}
   - component: {fileID: 6671603985262095769}
+  - component: {fileID: 345323177545467707}
   m_Layer: 5
   m_Name: ChampionProfile
   m_TagString: Untagged
@@ -114,6 +115,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5097f8a60ee7b468b7bc6a69af6574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &345323177545467707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401050264069553160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784e32f0e76a00d4c82e9c096f4f5133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 4769626265367560464}
+  speed: 10
 --- !u!1 &7069060069480154938
 GameObject:
   m_ObjectHideFlags: 0
