@@ -8,6 +8,7 @@ TagManager:
   - Champion
   - Obstacles
   - FogOfWar
+  - MainCanvas
   layers:
   - Default
   - TransparentFX
