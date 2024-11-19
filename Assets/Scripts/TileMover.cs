@@ -6,17 +6,15 @@ public class TileMover : MonoBehaviour
     
     private Tilemap tilemap;
     private GameObject playerController;
-    private TileNeighboring tileNeighboring;    
-
-
+    private TileNeighboring tileNeighboring;
     private bool isRequestingToMove;
 
     void Awake()
     {
-        tilemap = GameObject.FindGameObjectWithTag("WalkableMap").GetComponent<Tilemap>();
-        playerController = transform.parent.gameObject;
-        tileNeighboring = GetComponent<TileNeighboring>();
-        isRequestingToMove= false;
+        //tilemap = GameObject.FindGameObjectWithTag("WalkableMap").GetComponent<Tilemap>();
+        //playerController = transform.parent.gameObject;
+        //tileNeighboring = GetComponent<TileNeighboring>();
+        //isRequestingToMove= false;
     }
 
     public void RequestingToMove()
@@ -42,6 +40,17 @@ public class TileMover : MonoBehaviour
             isRequestingToMove=false;
         }
         
+    }
+
+    public void TeleportUIToTile(GameEventArgs<Vector3Int> gameEventArgs)
+    {
+        GameObject objectToTeleport = gameEventArgs.target;
+        Vector3Int cellPosition = gameEventArgs.data;
+
+        objectToTeleport.transform.position = TilemapLocator.Instance.GridToWorld(cellPosition);
+
+        Debug.Log("I have teleported the UI aspect of the player !");
+
     }
 
 }
