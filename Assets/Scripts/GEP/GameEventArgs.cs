@@ -12,4 +12,13 @@ public class GameEventArgs<T>
         this.data = data;
         this.context = context;
     }
+
+    public GameEventArgs(T data, object context = null)
+    {
+        //this is an universal GameEventArgs
+        this.target = null;
+        this.data = data;
+        this.context = context;
+
+    }
 }
