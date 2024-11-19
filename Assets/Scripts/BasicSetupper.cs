@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Animations;
+using Unity.VisualScripting;
 
 
 public class BasicSetupper : MonoBehaviour
@@ -9,6 +11,13 @@ public class BasicSetupper : MonoBehaviour
 
     [SerializeField]
     private GameObject championSelectorPrefab;
+
+    [SerializeField]
+    private GameEvent StartButtonEnabler;
+    
+    //potentially needed in the future
+    //private GameEvent StartButtonDisabler;
+
     
     [SerializeField]
     private int numberOfChamps;
@@ -29,6 +38,14 @@ public class BasicSetupper : MonoBehaviour
     public void Start()
     {
         RandomChampionComp(numberOfChamps);
+    }
+
+    public void Update()
+    {
+        if(transform.childCount == 0)
+        {
+            StartButtonEnabler?.Invoke();
+        }
     }
 
 
