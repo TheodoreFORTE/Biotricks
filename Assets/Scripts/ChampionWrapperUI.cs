@@ -1,17 +1,15 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ChampionWrapperUI : MonoBehaviour
 {
-    private Champion champion;
+    public Champion champion;
     
     [SerializeField]
-    private Image championProfile;
+    private Image championProfile;    
+    public Sprite championSprite;
 
-    private Sprite championSprite;
-
-    [SerializeField]
-    private ChampionEventContainer championSceneRegisterRequest;
 
 
 
@@ -20,6 +18,7 @@ public class ChampionWrapperUI : MonoBehaviour
     {
         champion = _champion;
         championSprite = Resources.Load<Sprite>($"Icons/Champions/{champion.GetName()}");
+        UpdateUI();
     }
 
     public void UpdateUI()
@@ -27,12 +26,9 @@ public class ChampionWrapperUI : MonoBehaviour
         championProfile.sprite = championSprite;
     }
 
-    public void SendChampionData()
-    {
-        GameEventArgs<Champion> championRegisterArgs = new GameEventArgs<Champion>(champion, context: transform.position);
-        championSceneRegisterRequest?.onEvent.Invoke(championRegisterArgs);
-    }
 
+
+    
     
 
 
