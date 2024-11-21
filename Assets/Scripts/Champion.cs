@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Champion
+public class Champion : IComparable<Champion>
 {
 
     private string championName;
@@ -13,7 +13,7 @@ public class Champion
 
 
     private int health;
-
+    private int level;
     private string championClass;
     private Ability ability;
     public SleeveComposition sleeveComposition;
@@ -26,8 +26,8 @@ public class Champion
         baseStatValues = championData.stats.ExportToBaseStatDictionary();
         maxStatValues = championData.stats.ExportToMaxStatDictionary();
         sleeveComposition = new SleeveComposition(); 
-
         championClass = championData.championClass.label;
+        level = 1;
     }
 
     public int GetCurrentStat(string name)
@@ -54,13 +54,40 @@ public class Champion
         return new string(championName);
     }
 
+    public int GetLevel()
+    {
+        return level;
+    }
+
+    public int CompareTo(Champion champion)
+    {
+        if(champion == null) return 1;
+
+
+        //First criteria : is the enemy is quickier ?
+        int diff = GetCurrentStat("Speed") - champion.GetCurrentStat("Speed");
+
+        if(diff != 0)
+        {
+            return diff;
+        }
+
+
+        else
+        {
+        
+        //Second criteria : is the enemy has more level than you
+            diff = GetLevel() - champion.GetLevel();
+
+            if(diff != 0)
+            {
+                return diff;
+            }
+
+        //Last criteria : percentage of HP 
+            return (GetCurrentHealth() / champion.GetCurrentStat("Health"))*100
+            - (champion.GetCurrentHealth()/champion.GetCurrentStat("Health"))*100;
+        }
+    }
     
-
-
-
-    
-
-
-
-
 }
