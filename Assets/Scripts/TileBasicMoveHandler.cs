@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class TileBasicMoveHandler : MonoBehaviour, DragDropHandler
+public class TileBasicMoveHandler : MonoBehaviour, IDragDropHandler
 {
     
     public bool CanBeDragged()
