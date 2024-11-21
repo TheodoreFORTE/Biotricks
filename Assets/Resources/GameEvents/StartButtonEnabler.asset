@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00cc6fe3dfcc42f4bb60e4a457683476, type: 3}
-  m_Name: PlayerSpawn
+  m_Script: {fileID: 11500000, guid: a1a8b5fb9ebddd946a072355cd50b66b, type: 3}
+  m_Name: StartButtonEnabler
   m_EditorClassIdentifier: 
-  tile: {fileID: 11400000, guid: aa25ce924de5047469089e07d59ee712, type: 2}
-  isPlayerSide: 1
-  prefabToSpawn: {fileID: 7740090798895546141, guid: 2c8590b9a6da93c4d8f231c1aaa82d9f, type: 3}
