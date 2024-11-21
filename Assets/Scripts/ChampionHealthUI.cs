@@ -7,8 +7,18 @@ public class ChampionHealthUI : MonoBehaviour
     
     [SerializeField]
     private GameObject championController;
-
     private Champion linkedChampion;
+
+
+
+    void Awake()
+    {
+        GameObject mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
+        transform.SetParent(mainCanvas.transform);    
+    }
+
+
+
 
     void Update()
     {   
@@ -18,8 +28,6 @@ public class ChampionHealthUI : MonoBehaviour
         }
     }
 
-
-
     void UpdateHealthBar()
     {
         healthBar.fillAmount = linkedChampion.GetCurrentHealth() / linkedChampion.GetCurrentStat("Health");
@@ -28,6 +36,6 @@ public class ChampionHealthUI : MonoBehaviour
     public void LinkChampionData(GameObject _championController)
     {
         championController = _championController;
-        linkedChampion = _championController.GetComponent<ChampionManager>().champion;
+        linkedChampion = _championController.GetComponent<ChampionWrapperScene>().champion;
     }
 }
