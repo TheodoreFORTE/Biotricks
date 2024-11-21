@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface DragDropHandler
+public interface IDragDropHandler
 {
     
     public bool CanBeDragged();

@@ -13,7 +13,7 @@ public class DragDrop : MonoBehaviour
     private Vector3 originLocalPosition;
     
 
-    private DragDropHandler dragDropHandler;
+    private IDragDropHandler dragDropHandler;
     private Transform parentTransform;
 
     private bool uponDragging = false;
@@ -24,7 +24,7 @@ public class DragDrop : MonoBehaviour
         originLocalPosition = transform.localPosition;
         parentTransform = transform.parent.transform;
 
-        DragDropHandler[] handlers = GetComponents<DragDropHandler>();
+        IDragDropHandler[] handlers = GetComponents<IDragDropHandler>();
 
 
         if(handlers.Count() == 1)

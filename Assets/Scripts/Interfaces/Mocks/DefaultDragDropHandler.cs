@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DefaultDragDropHandler : DragDropHandler
+public class DefaultDragDropHandler : IDragDropHandler
 {
     public bool CanBeDragged()
     {

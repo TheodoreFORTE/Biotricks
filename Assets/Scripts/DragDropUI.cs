@@ -9,7 +9,7 @@ public class DragDropUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
 
-    private DragDropHandler dragDropHandler;
+    private IDragDropHandler dragDropHandler;
 
     private Vector3 mousePositionOffset;
     private Vector3 originalLocalPosition;
@@ -20,7 +20,7 @@ public class DragDropUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         
         parentTransform = transform.parent.transform;
-        DragDropHandler[] handlers = GetComponents<DragDropHandler>();
+        IDragDropHandler[] handlers = GetComponents<IDragDropHandler>();
 
         if(handlers.Count() == 1)
         {

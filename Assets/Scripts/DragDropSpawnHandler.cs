@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.Experimental.AI;
 using Unity.VisualScripting;
 
-public class DragDropSpawnHandler : MonoBehaviour, DragDropHandler
+public class DragDropSpawnHandler : MonoBehaviour, IDragDropHandler
 {
 
     
