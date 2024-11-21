@@ -60,7 +60,8 @@ public class BasicSetupper : MonoBehaviour
                 Debug.Log(randomPick.GetName());
 
                 champions.Remove(randomPick);                
-                Instantiate(championSelectorPrefab, transform);  
+                GameObject championSelector = Instantiate(championSelectorPrefab, transform);                  
+                championSelector.GetComponent<ChampionWrapperUI>().LoadChampionData(randomPick);
                 
 
             }
